@@ -1,24 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace GettingReal
 {
     public class Booking
     {
-        public string Name { get; set; }
-        public string Phone { get; set; }
-        public DateTime DateTime { get; set; }
-        public int Guests { get; set; }
-        public string Occasion { get; set; }
+        public DateTime DateTime { get; private set; }
+        public int Guests { get; private set; }
+        public string Occasion { get; private set; }
+        public int BookingId { get; private set; }
+        public Guest Guest { get; private set; }
+        public Bar Bar { get; private set; }
 
-        public Booking(string name, string phone, DateTime dateTime, int guests, string occasion)
+        public Booking(Guest guest, Bar bar, DateTime dateTime, int guests, string occasion, int bookingId)
         {
-            Name = name;
-            Phone = phone;
+            Guest = guest;
+            Bar = bar;
             DateTime = dateTime;
             Guests = guests;
             Occasion = occasion;
+            BookingId = bookingId;
+        }
+        public void UpdateBooking(DateTime dateTime, int guests)
+        {
+            DateTime = dateTime;
+            Guests = guests;
         }
     }
 }
