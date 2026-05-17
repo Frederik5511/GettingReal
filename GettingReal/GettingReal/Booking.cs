@@ -12,10 +12,12 @@ namespace GettingReal
         public string Occasion { get; private set; }
         public int BookingId { get; private set; }
         public Guest Guest { get; private set; }
+        public Employee Employee { get; private set; }
         public Bar Bar { get; private set; }
 
-        public Booking(Guest guest, Bar bar, DateTime dateTime, int guests, string occasion, int bookingId)
+        public Booking(Employee employee, Guest guest, Bar bar, DateTime dateTime, int guests, string occasion, int bookingId)
         {
+            Employee = employee;
             Guest = guest;
             Bar = bar;
             DateTime = dateTime;

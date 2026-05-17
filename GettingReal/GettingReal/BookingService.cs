@@ -9,7 +9,7 @@ namespace GettingReal
         private BookingRepository _repository = new BookingRepository();
         
         
-        public Booking CreateBooking(Guest guest, Bar bar, DateTime dateTime, int guests, string occasion)
+        public Booking CreateBooking(Employee employee, Guest guest, Bar bar, DateTime dateTime, int guests, string occasion)
         {
             int highestId = 0;
             foreach (Booking existingBooking in _repository.GetAll())
@@ -28,7 +28,7 @@ namespace GettingReal
             {
                 throw new InvalidOperationException("Du kan ikke oprette en booking som er i fortiden");
             }
-            var booking = new Booking(guest, bar, dateTime, guests, occasion, bookingId);
+            var booking = new Booking(employee, guest, bar, dateTime, guests, occasion, bookingId);
             _repository.Add(booking);
             _repository.Save();
             return booking;
