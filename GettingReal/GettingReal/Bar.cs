@@ -5,12 +5,16 @@ using System.Text.Json.Serialization;
 
 namespace GettingReal
 {
-    public enum Bar
+    public class Bar
     {
-        Cafe_sekseren,
-        Domdal_Craft,
-        Winston_Craft,
-        Meyer_Craft,
+        public string Name { get; private set; }
+        public int Capacity { get; private set; }
+
+        public Bar(string name, int capacity)
+        {
+            Name = name;
+            Capacity = capacity;
+        }
     }
     
 }

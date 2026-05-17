@@ -28,6 +28,18 @@ namespace GettingReal
             {
                 throw new InvalidOperationException("Du kan ikke oprette en booking som er i fortiden");
             }
+            int totalGuestForDate = 0;
+            foreach (Booking bookingguest in _repository.GetAll())
+            {
+                if(bookingguest.Bar == bar && bookingguest.DateTime.Date == dateTime.Date)
+                {
+                    totalGuestForDate += bookingguest.Guests;
+                }
+            }
+            if(totalGuestForDate + guests > bar.Capacity)
+            {
+                throw new InvalidOperationException("Kapacitet overskrides");
+            }
             var booking = new Booking(employee, guest, bar, dateTime, guests, occasion, bookingId);
             _repository.Add(booking);
             _repository.Save();
